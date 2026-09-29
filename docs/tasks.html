@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الملف 1 — مهام الـ 6 أشخاص</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f3ec;--card:#fffdf8;--ink:#1d2a2e;--mute:#5d6b6f;--line:#e2dccd;--a:#0f6b5c;--b:#b4491f;--c:#2d4f8a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14191b;--card:#1c2326;--ink:#ece8de;--mute:#9aa8ab;--line:#2e393c;--a:#4fc3ad;--b:#ee8f66;--c:#86a8e6}}
+:root[data-theme="dark"]{--bg:#14191b;--card:#1c2326;--ink:#ece8de;--mute:#9aa8ab;--line:#2e393c;--a:#4fc3ad;--b:#ee8f66;--c:#86a8e6}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans Arabic',Tahoma,sans-serif;line-height:1.85;font-size:16px}
+main{max-width:860px;margin:auto;padding:24px 16px 60px}
+h1{font-size:1.9rem;margin:.2em 0}
+.sub{color:var(--mute);margin:0 0 20px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:16px 0}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.9rem}
+.flow span{background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:2px 12px}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+nav a{color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--card);padding:4px 14px;border-radius:999px;font-size:.9rem}
+.p{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--a);border-radius:14px;padding:6px 20px 18px;margin:26px 0}
+.p h2{font-size:1.35rem;margin:.6em 0 0}
+.tag{color:var(--mute);font-size:.88rem;margin:0 0 6px}
+.q{font-weight:700;color:var(--a);margin:18px 0 4px;font-size:1.02rem}
+.q.h{color:var(--b)}.q.l{color:var(--c)}
+ul,ol{margin:.2em 0;padding-inline-start:1.4em}
+li{margin:.25em 0}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:420px}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:start;vertical-align:top}
+th{background:var(--bg)}
+code{direction:ltr;unicode-bidi:embed;background:var(--bg);padding:1px 6px;border-radius:5px;font-size:.88em}
+.det{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 14px 10px 10px;margin:10px 0 0;list-style:none}.det li{margin:.5em 0}.det b{color:var(--a)}
+.warn{border-inline-start:5px solid var(--b)}
+.tree{direction:ltr;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;overflow-x:auto;font-family:Consolas,Menlo,monospace;font-size:.86rem;line-height:1.6;white-space:pre;margin:8px 0}
+</style>
+</head>
+<body>
+<main>
+<h1>الملف 1 — مهام الـ 6 أشخاص</h1>
+<p class="sub">كل شخص: هيعمل إيه بالضبط · إزاي · محتاج يتعلم إيه. (مواعيد التسليم وشكل الملفات في الملف 2)</p>
+<div class="box"><b>الكل يتعلم في أول 2–3 أيام:</b> Git/GitHub · Virtual environments · قراءة وكتابة CSV بـ pandas.</div>
+<nav>
+<a href="#schema">0 · الـ Schema و GitHub</a><a href="#p1">1 · جمع الداتا</a><a href="#p2">2 · التطبيع اللغوي</a><a href="#p3">3 · التنضيف و EDA</a><a href="#p4">4 · الموديل</a><a href="#p5">5 · التحليل التنافسي</a><a href="#p6">6 · Dashboard</a>
+</nav>
+<section class="p" id="schema" style="border-top-color:var(--c)">
+<h2>الـ Schema وطريقة الشغل على GitHub (اقراه الأول، الكل)</h2>
+<p class="tag">الفكرة كلها في 3 حاجات: ريبو واحد بفولدرات واضحة · ملفات CSV بأعمدة ثابتة · Git بأبسط شكل.</p>
+
+<div class="q">1) شكل الريبو</div>
+<p style="margin:0">ريبو واحد اسمه مثلاً <code>competitive-analysis</code>. الأكواد كلها جوه فولدر <code>notebooks/</code> (فولدر لكل شخص)، والداتا في <code>data/</code> (3 فولدرات)، وفولدر <code>docs/</code> فيه ملف <code>schema.md</code> اللي فيه أعمدة الداتا كلها في مكان واحد.</p>
+<div class="tree">competitive-analysis/
+├── README.md
+├── requirements.txt
+├── .gitignore
+│
+├── docs/
+│   └── schema.md                     # data columns for all files
+│
+├── data/
+│   ├── raw/
+│   │   └── raw_data.csv              # person 1
+│   ├── cleaned/
+│   │   ├── cleaned_a.csv             # person 2
+│   │   └── cleaned_final.csv         # person 3
+│   └── processed/
+│       ├── model_output.csv          # person 4
+│       ├── competitive_output.csv    # person 5
+│       └── gaps_summary.csv          # person 5
+│
+├── notebooks/
+│   ├── 1_collection/                 # person 1 code
+│   ├── 2_normalization/              # person 2 code
+│   ├── 3_cleaning_eda/               # person 3 code
+│   ├── 4_model/                      # person 4 code
+│   └── 5_competitive/                # person 5 code
+│
+└── dashboard/
+    └── app.py                        # person 6</div>
+
+<div class="q h">2) أعمدة ملفات الداتا (الـ Schema)</div>
+<p style="margin:0 0 6px;color:var(--mute);font-size:.9rem">نفس الجداول دي موجودة في <code>docs/schema.md</code> على GitHub.</p>
+<p style="margin:0"><b>القاعدة الذهبية:</b> كل ملف بياخد كل أعمدة الملف اللي قبله <b>ويضيف أعمدة جديدة بس</b>. ممنوع حذف عمود أو تغيير اسمه. كده الكل بيشتغل على نفس الأسماء.</p>
+<div class="scroll"><table>
+<tr><th>العمود</th><th>مين بيضيفه</th><th>القيمة</th></tr>
+<tr><td><code>review_id</code></td><td>1</td><td>رقم التقييم من Google Play</td></tr>
+<tr><td><code>app_name</code></td><td>1</td><td>اسم التطبيق بالإنجليزي زي ما في الـ dictionary (مثال: <code>Vodafone Egypt</code>)</td></tr>
+<tr><td><code>domain</code></td><td>1</td><td><code>Telecom</code> / <code>Payments</code> / <code>Delivery</code></td></tr>
+<tr><td><code>rating</code></td><td>1</td><td>رقم من 1 لـ 5</td></tr>
+<tr><td><code>date</code></td><td>1</td><td>بالشكل <code>2026-03-14</code></td></tr>
+<tr><td><code>review_text</code></td><td>1</td><td>النص الأصلي زي ما هو</td></tr>
+<tr><td><code>review_type</code></td><td>1</td><td><code>Negative</code> (1–2) / <code>Neutral</code> (3) / <code>Positive</code> (4–5)</td></tr>
+<tr><td><code>normalized_text</code></td><td>2</td><td>النص بعد التطبيع اللغوي</td></tr>
+<tr><td><code>is_franco</code></td><td>2</td><td><code>True</code> / <code>False</code></td></tr>
+<tr><td><code>final_text</code></td><td>3</td><td>النص النضيف اللي الموديل هيشتغل عليه</td></tr>
+<tr><td><code>topic_label</code></td><td>4</td><td>اسم الموضوع (عام لكل شركات القطاع)</td></tr>
+<tr><td><code>severity</code></td><td>4</td><td><code>High</code> / <code>Medium</code> / <code>Low</code> للسلبي بس، وفاضي لو مش سلبي</td></tr>
+</table></div>
+<p style="margin:10px 0 4px"><b>ملفات الشخص 5</b> (جداول جديدة، مش نفس أعمدة التقييمات):</p>
+<div class="scroll"><table>
+<tr><th>الملف</th><th>الأعمدة</th></tr>
+<tr><td><code>competitive_output.csv</code></td><td dir="ltr"><code>domain, app_name, topic_label, total_reviews, complaint_pct, praise_pct</code></td></tr>
+<tr><td><code>gaps_summary.csv</code></td><td dir="ltr"><code>domain, topic_label, weak_app, weak_pct, strong_app, strong_pct, gap_size, sentence</code></td></tr>
+</table></div>
+
+<div class="q l">3) قواعد بسيطة تمنع المشاكل</div>
+<ul>
+<li>أسماء الأعمدة إنجليزي، حروف صغيرة، وبينها <code>_</code>. والقيم المسموحة تتكتب بالضبط (<code>Negative</code> مش <code>negative</code>).</li>
+<li>احفظ أي CSV بالشكل ده: <code>df.to_csv(path, index=False, encoding="utf-8-sig")</code> عشان العربي يفضل سليم.</li>
+<li>ملف الداتا بيعدله صاحبه بس، والباقي بيقروه. لو محتاج تغيير في الأعمدة، كلّم الفريق الأول.</li>
+<li>الملفات هتكون أقل من 100MB فينفع تترفع على GitHub عادي.</li>
+</ul>
+
+<div class="q">4) Git بأبسط شكل</div>
+<ol>
+<li><code>main</code> فيه الشغل الجاهز بس، محدش بيشتغل عليه مباشرة.</li>
+<li>كل شخص بيعمل branch باسمه ويشتغل جواه.</li>
+<li>لما تخلص حاجة: ارفعها واعمل Pull Request، وواحد من الفريق يراجعها ويعمل Merge.</li>
+<li>كل واحد بيعدّل في فولدره بس، وده لوحده بيمنع تقريبًا كل الـ conflicts.</li>
+</ol>
+<div class="tree">git pull                              # قبل ما تبدأ كل يوم
+git checkout -b person1-scraping      # مرة واحدة في الأول
+git add .
+git commit -m "add 500 sample rows"
+git push -u origin person1-scraping   # وبعدها Pull Request من GitHub</div>
+</section>
+
+<section class="p" id="p1">
+<h2>الشخص 1 — جمع الداتا</h2>
+<p class="tag">بتسلّم: <code>data/raw/raw_data.csv</code> ← للشخص 2</p>
+<div class="q">1) هتعمل إيه بالضبط؟</div>
+<p style="margin:0">تسحب تقييمات الـ 9 تطبيقات من Google Play (كل النجوم 1–5)، بواقع 3000–5000 تقييم لكل تطبيق، وتضيف عمودي <code>domain</code> و <code>review_type</code>.</p>
+<ul class="det">
+<li><b>الفكرة:</b> إنت اللي بتجيب المادة الخام للمشروع كله. لو داتاك ناقصة أو غلط، كل الفريق هيتأثر.</li>
+<li><b>بتسحب إيه؟</b> لكل تقييم: <code>review_id</code>، <code>app_name</code>، <code>rating</code> من 1 لـ 5، <code>date</code>، و<code>review_text</code>. تسحب <b>كل النجوم</b> مش السلبي بس، عشان الإيجابي هو نقاط القوة اللي هنقارن بيها.</li>
+<li><b>الأعمدة اللي إنت اللي بتضيفها:</b> <code>domain</code> (Telecom / Payments / Delivery) من الـ dictionary، و<code>review_type</code> من الـ rating (1–2 سلبي، 3 محايد، 4–5 إيجابي).</li>
+<li><b>مثال صف بعد الشغل:</b> <code>a1b2 | Vodafone Egypt | Telecom | 2 | 2026-03-14 | الشبكة ضعيفة جدا | Negative</code></li>
+<li><b>خلي بالك:</b> اللغة المصرية والبلد (<code>lang='ar'</code>, <code>country='eg'</code>) في إعدادات السحب، وسجّل في ملف صغير كام تقييم اتسحب لكل تطبيق.</li>
+<li><b>الهدف الرقمي:</b> 9 تطبيقات × 3000–5000 = حوالي 27,000 إلى 45,000 تقييم في ملف واحد.</li>
+</ul>
+<div class="q h">2) إزاي؟</div>
+<ol>
+<li>اعمل dictionary فيه كل تطبيق: اسمه، الـ package id بتاعه، وقطاعه.</li>
+<li>اكتب loop واحد يعدّي على الـ dictionary ويسحب بـ <code>google-play-scraper</code> (من غير تكرار كود لكل تطبيق).</li>
+<li>ضيف <code>domain</code> من الـ dictionary، وضيف <code>review_type</code> من الـ rating.</li>
+<li>شيل التكرار (<code>drop_duplicates</code> على <code>review_id</code>) واحفظ CSV.</li>
+<li><b>أول يومين:</b> سلّم عينة 500 صف من تطبيق واحد عشان الشخص 2 و3 يبدأوا. بعدها وسّع قطاع قطاع.</li>
+</ol>
+<div class="q l">3) لازم تتعلم إيه؟</div>
+<ul>
+<li>Python أساسي: loops و dictionaries و functions</li>
+<li>pandas: قراءة وكتابة CSV، إضافة أعمدة، <code>drop_duplicates</code></li>
+<li>مكتبة <code>google-play-scraper</code> (اقرا الـ README بتاعها، فيه مثال جاهز)</li>
+</ul>
+<p class="tag">جدولك: أسبوع 1 سحب العينة · أسبوع 2 Telecom + Payments · أسبوع 3 Delivery · أسبوع 4 مراجعة الداتا الخام</p>
+</section>
+
+<!-- P2 -->
+<section class="p" id="p2" style="border-top-color:var(--b)">
+<h2>الشخص 2 — التطبيع اللغوي (عربي وفرانكو-عربي)</h2>
+<p class="tag">بتستلم: <code>raw_data.csv</code> · بتسلّم: <code>data/cleaned/cleaned_a.csv</code> ← للشخص 3</p>
+<div class="q">1) هتعمل إيه بالضبط؟</div>
+<p style="margin:0">شغلك جزئين: (أ) توحيد شكل الحروف العربية، (ب) اكتشاف التعليقات "الفرانكو-عربي" والتعامل معاها.</p>
+<ul class="det">
+<li><b>الجزء أ: توحيد الحروف.</b> الناس بتكتب نفس الكلمة بأشكال مختلفة، والكمبيوتر بيشوفها كلمات مختلفة. لو مطبّعتش، الموديل هيفتكر "احسن" و"أحسن" كلمتين، والمواضيع هتتوزع غلط.
+<div class="scroll"><table>
+<tr><th>قبل</th><th>بعد</th><th>القاعدة</th></tr>
+<tr><td>أحسن / إحسن / احسن</td><td>احسن</td><td>أ إ آ ← ا</td></tr>
+<tr><td>خدمة / خدمه</td><td>خدمه</td><td>ة ← ه</td></tr>
+<tr><td>على / علي</td><td>علي</td><td>ى ← ي</td></tr>
+<tr><td>جمييييل</td><td>جميل</td><td>شيل تكرار الحرف (أكتر من مرتين)</td></tr>
+<tr><td>الخَدْمَة</td><td>الخدمه</td><td>شيل التشكيل والتطويل (ـ)</td></tr>
+</table></div></li>
+<li><b>الجزء ب: الفرانكو-عربي.</b> المصريين كتير بيكتبوا عربي بحروف إنجليزي وأرقام (الأرقام بتمثل حروف: 3 = ع، 5 = خ، 7 = ح، 2 = ء). الموديل بيفهم عربي بس، فالتعليقات دي لازم نتعامل معاها.
+<div class="scroll"><table>
+<tr><th>التعليق (فرانكو)</th><th>معناه بالعربي</th></tr>
+<tr><td dir="ltr"><code>el application da mesh shaghal</code></td><td>التطبيق ده مش شغال</td></tr>
+<tr><td dir="ltr"><code>el 5edma weshha 3ala</code></td><td>الخدمة وحشة علي</td></tr>
+</table></div></li>
+<li><b>هتعمل فيها إيه؟</b> (1) تكتشفها وتعلّم عليها بعمود <code>is_franco</code>. (2) تحوّل الكلمات الشائعة بقاموس بسيط (3 ← ع، 7 ← ح، mesh ← مش)، أو تستبعد اللي مش عارف تحوّله. <b>ابدأ بالكشف والتعليم، والتحويل الكامل بعدين لو وقتك سمح.</b></li>
+<li><b>المدخل:</b> <code>raw_data.csv</code> · <b>المخرج:</b> نفس أعمدة <code>raw_data.csv</code> + عمودين جداد بس: <code>normalized_text</code> و<code>is_franco</code>.</li>
+</ul>
+<div class="q h">2) إزاي؟</div>
+<ol>
+<li>اكتب function <code>normalize_arabic</code>: توحيد الألف (أ إ آ ← ا)، الياء والألف المقصورة، التاء المربوطة، وشيل التشكيل والتطويل والحروف المكررة.</li>
+<li>اكتب function تكتشف الفرانكو-عربي (نسبة الحروف اللاتينية + كلمات مفتاحية زي 3ala, mesh, betaa3), وقرر: تحوّلها لعربي ولا تعلّم عليها في عمود <code>is_franco</code>.</li>
+<li>طبّق الاتنين بـ <code>df.apply</code> على العمود <code>review_text</code> وحط النتيجة في <code>normalized_text</code> و<code>is_franco</code>.</li>
+<li>جرّب الأول على عينة الـ 500، وبعدين على الداتا كلها. لو بطيء، اشتغل على دفعات (batches).</li>
+</ol>
+<div class="q l">3) لازم تتعلم إيه؟</div>
+<ul>
+<li>Regex بعمق (أهم حاجة عندك)</li>
+<li>الحروف العربية و Unicode ranges (النطاق <code>\u0600-\u06FF</code>)</li>
+<li>pandas: <code>apply</code> و <code>str.replace</code></li>
+</ul>
+<p class="tag">جدولك: أسبوع 1 Regex والعينة · أسبوع 2 Telecom · أسبوع 3 Payments + Delivery · أسبوع 4 تسليم كامل</p>
+</section>
+
+<!-- P3 -->
+<section class="p" id="p3" style="border-top-color:var(--c)">
+<h2>الشخص 3 — التنضيف النهائي، الدمج، و EDA</h2>
+<p class="tag">بتستلم: <code>cleaned_a.csv</code> · بتسلّم: <code>data/cleaned/cleaned_final.csv</code> ← للشخص 4</p>
+<div class="q">1) هتعمل إيه بالضبط؟</div>
+<p style="margin:0">تنضّف الداتا (نصوص فاضية، قصيرة جدًا، مكررة)، تطلّع ملف واحد فيه كل التطبيقات بعمود <code>final_text</code>، وتعمل تحليل استكشافي (EDA) يكشف المشاكل بدري.</p>
+<ul class="det">
+<li><b>الفكرة:</b> إنت "حارس الجودة". الداتا اللي بتروح للموديل لازم تكون نضيفة، وإنت اللي بتقول للفريق لو فيه مشكلة قبل ما تكبر.</li>
+<li><b>التنضيف:</b> شيل الصفوف الفاضية، التعليقات أقل من 3 كلمات (زي "تمام" أو "حلو"، لأنها مش بتقول حاجة عن الموضوع)، التعليقات المكررة، وتعليقات فيها رموز أو إيموجي بس.</li>
+<li><b>العمود النهائي:</b> <code>final_text</code> هو <code>normalized_text</code> بعد التنضيف، وهو اللي الشخص 4 هيشتغل عليه. متحذفش أي عمود من الأعمدة اللي جتلك.</li>
+<li><b>الـ EDA (تحليل استكشافي):</b> رسومات وأرقام تجاوب على أسئلة:
+<ul>
+<li>كام تقييم لكل شركة؟ (لو 5000 قصاد 200، المقارنة مش عادلة)</li>
+<li>نسبة الإيجابي/السلبي/المحايد لكل شركة؟ (لو شركة كلها سلبي، فيه مشكلة في العينة)</li>
+<li>طول التعليقات، وتوزيع التواريخ، وتوزيع النجوم.</li>
+</ul></li>
+<li><b>مسؤوليتك المهمة:</b> لو لقيت شركة عددها قليل جدًا، تبلّغ الفريق فورًا عشان الشخص 1 يسحب لها زيادة.</li>
+<li><b>المدخل:</b> <code>cleaned_a.csv</code> · <b>المخرج:</b> <code>cleaned_final.csv</code> + رسومات EDA.</li>
+</ul>
+<div class="q h">2) إزاي؟</div>
+<ol>
+<li>شيل الصفوف الفاضية والتعليقات اللي أقل من 3 كلمات (مثلاً "تمام")، والمكرر.</li>
+<li>لو الداتا جت على دفعات (قطاع قطاع) بنفس الأعمدة، ادمجها بـ <code>pd.concat</code>. وطلّع عمود <code>final_text</code>.</li>
+<li><b>EDA للمقارنة العادلة:</b>
+ <ul>
+ <li>توزيع Positive/Negative/Neutral لكل شركة. لو شركة كلها سلبي أو كلها إيجابي، ده تحذير.</li>
+ <li>عدد التقييمات لكل شركة جوه القطاع. لو 5000 قصاد 200، المقارنة مش عادلة.</li>
+ </ul></li>
+<li><b>لو لقيت شركة عددها قليل جدًا، بلّغ الفريق فورًا</b> عشان الشخص 1 يسحب لها داتا زيادة.</li>
+<li>ارسم النتايج بـ matplotlib أو seaborn واحفظ الملف النهائي.</li>
+</ol>
+<div class="q l">3) لازم تتعلم إيه؟</div>
+<ul>
+<li>pandas متقدم: <code>groupby</code> و <code>merge</code> و <code>apply</code> و <code>value_counts</code></li>
+<li>Regex بسيط للتنضيف</li>
+<li>matplotlib / seaborn: bar chart و histogram</li>
+</ul>
+<p class="tag">جدولك: أسبوع 1 pandas/EDA · أسبوع 2–3 EDA على القطاعات · أسبوع 4 الدمج · أسبوع 5 تسليم <code>cleaned_final.csv</code></p>
+</section>
+
+<!-- P4 -->
+<section class="p" id="p4">
+<h2>الشخص 4 — الموديل (Topic Modeling + Severity)</h2>
+<p class="tag">بتستلم: <code>cleaned_final.csv</code> · بتسلّم: <code>data/processed/model_output.csv</code> ← للشخص 5 و 6 · <b>ده أتقل دور تقنيًا، وطبيعي ياخد وقت أكتر</b></p>
+<div class="q">1) هتعمل إيه بالضبط؟</div>
+<p style="margin:0">تطلّع لكل تعليق: موضوعه (<code>topic_label</code>)، وخطورته لو سلبي (<code>severity</code>: High/Medium/Low، وبيفضل فاضي لو التعليق مش سلبي).</p>
+<ul class="det">
+<li><b>الفكرة:</b> الموديل بيحوّل آلاف التعليقات لأرقام قابلة للمقارنة: "التعليق ده عن الدعم الفني، وسلبي، وخطير".</li>
+<li><b>Topic Modeling:</b> الكمبيوتر بيجمّع التعليقات المتشابهة في مجموعات (topics) من غير ما تقوله المواضيع. مثلاً تطلع مجموعة كلماتها "الشبكة، ضعيفة، بتقطع"، وإنت بتسميها "استقرار الشبكة".</li>
+<li><b>ليه لكل قطاع مش لكل شركة؟</b> عشان المواضيع تبقى نفسها لكل شركات القطاع، وكده نقدر نقارن فودافون بأورانج في نفس الموضوع.</li>
+<li><b>تسمية المواضيع:</b> شغل يدوي بإيدك، والاسم لازم يكون عام ("سرعة الدعم الفني") مش خاص بشركة.</li>
+<li><b>Severity للسلبي:</b> "الشبكة وحشة شوية" = Low، "اتخصم مني فلوس من غير سبب" = High. بتبدأ بقواعد كلمات (سرقة، خصم، نصب ← High) وبعدين بموديل أو LLM API.</li>
+<li><b>الإيجابي والمحايد:</b> <code>severity</code> بيفضل فاضي. مش هنصنّف قوة المديح دلوقتي عشان نبسّط، ولو فضل وقت في الآخر نضيفها.</li>
+<li><b>التقييم:</b> صنّف 100–200 تعليق بإيدك وقارن بنتيجة الموديل (Precision/Recall/F1) عشان تعرف دقته.</li>
+<li><b>المدخل:</b> <code>cleaned_final.csv</code> · <b>المخرج:</b> <code>model_output.csv</code> (نفس أعمدة <code>cleaned_final.csv</code> + عمودين جداد بس: <code>topic_label</code> و<code>severity</code>).</li>
+</ul>
+<div class="q h">2) إزاي؟</div>
+<p style="margin:0"><b>المرحلة أ: المواضيع (لكل قطاع، مش لكل شركة)</b></p>
+<ol>
+<li>افصل الداتا حسب <code>domain</code> (3 مجموعات).</li>
+<li>لكل قطاع: حوّل النصوص لـ embeddings بموديل <code>aubmindlab/bert-base-arabertv02</code>، وشغّل BERTopic على تعليقات القطاع كلها مع بعض (عشان المواضيع تبقى موحدة وتنفع للمقارنة).</li>
+<li>سمّي كل topic بإيدك ("سرعة الدعم الفني"، "استقرار الشبكة"). <b>الاسم لازم يكون عام</b> ينفع لكل شركات القطاع، وادمج المتشابه.</li>
+</ol>
+<p style="margin:8px 0 0"><b>المرحلة ب: الخطورة والمديح</b></p>
+<ol start="4">
+<li>للسلبي: قواعد كلمات (Rule-based) + Zero-shot أو LLM API لتصنيف High/Medium/Low.</li>
+<li>قيّم دقة شغلك على 100–200 تعليق صنّفتهم بإيدك (Precision/Recall/F1).</li>
+</ol>
+<div class="q l">3) لازم تتعلم إيه؟</div>
+<div class="scroll"><table>
+<tr><th>الموضوع</th><th>الوقت</th></tr>
+<tr><td>Embeddings + فكرة عامة عن Transformers/BERT</td><td>يومين</td></tr>
+<tr><td>توثيق sentence-transformers و BERTopic + تطبيق</td><td>2–3 أيام</td></tr>
+<tr><td>UMAP و HDBSCAN (الفكرة بس، من غير رياضيات)</td><td>يوم</td></tr>
+<tr><td>Zero-shot classification + Prompt engineering</td><td>يومين</td></tr>
+<tr><td>Precision/Recall/F1 عمليًا</td><td>يوم–يومين</td></tr>
+</table></div>
+<p class="tag">جدولك: أسبوع 1–3 تعلّم وتجارب على عينة · أسبوع 4–5 Topics (Telecom ثم الباقي) · أسبوع 6 Severity · أسبوع 7 تسليم كامل. <b>سلّم أول قطاع جاهز بدري للشخص 5.</b></p>
+</section>
+
+<!-- P5 -->
+<section class="p" id="p5" style="border-top-color:var(--b)">
+<h2>الشخص 5 — محرك التحليل التنافسي</h2>
+<p class="tag">بتستلم: <code>model_output.csv</code> · بتسلّم: <code>competitive_output.csv</code> + <code>gaps_summary.csv</code> ← للشخص 6</p>
+<div class="q">1) هتعمل إيه بالضبط؟</div>
+<p style="margin:0">تحسب لكل شركة في كل موضوع نسبة الشكوى ونسبة المديح، وتكتشف "الفجوات": شركة بتتشتم في موضوع وشركة تانية في نفس القطاع بتتمدح فيه. وتكتب جملة تفسيرية لكل فجوة.</p>
+<ul class="det">
+<li><b>الفكرة:</b> ده قلب المشروع. إنت اللي بتحوّل الداتا لاستنتاج بيفيد الشركة: "أنتي ضعيفة هنا، وعدوك قوي هنا".</li>
+<li><b>الخطوة 1: النسب.</b> لكل (شركة + موضوع) تحسب كام % من التعليقات فيه سلبي وكام % إيجابي. مثال: من 100 تعليق عن "الدعم الفني" في فودافون، 45 سلبي ← <code>complaint_pct = 45%</code>.</li>
+<li><b>الخطوة 2: الفجوة.</b> لو شركة A شكاويها في موضوع ≥ 30%، وشركة B في نفس القطاع والموضوع مديحها ≥ 25%، تبقى دي فجوة.</li>
+<li><b>الخطوة 3: الترتيب.</b> الفجوات في جدول مرتب من الأكبر (الفرق بين النسبتين أكبر) للأصغر.</li>
+<li><b>الخطوة 4: الجملة.</b> لكل فجوة جملة جاهزة للعرض: "فودافون بتعاني من بطء الدعم الفني (45%)، بينما أورانج بتتمدح في نفس النقطة (40%)."</li>
+<li><b>الأرقام 30/25 تجريبية:</b> لو طلعت فجوات قليلة جدًا، نزّلها. لو كتيرة جدًا، ارفعها.</li>
+<li><b>المدخل:</b> <code>model_output.csv</code> · <b>المخرج:</b> <code>competitive_output.csv</code> + <code>gaps_summary.csv</code> بالأعمدة المتحددة في جدول الـ Schema فوق. الـ <code>complaint_pct</code> هو نسبة <code>Negative</code> من كل تعليقات (الشركة + الموضوع)، و<code>praise_pct</code> نسبة <code>Positive</code>.</li>
+</ul>
+<div class="q h">2) إزاي؟</div>
+<ol>
+<li>اعمل جدول محوري: <code>groupby(['domain','app_name','topic_label','review_type']).size().unstack(fill_value=0)</code></li>
+<li>احسب <code>complaint_pct</code> و <code>praise_pct</code> لكل صف.</li>
+<li>اكتب function <code>detect_gap</code>: لو شركة A نسبة الشكوى عندها ≥ 30% وشركة B في نفس القطاع والموضوع نسبة المديح ≥ 25%، سجّل فجوة.</li>
+<li>رتّب الفجوات بحجم الفرق بين النسبتين.</li>
+<li>اكتب لكل فجوة جملة، مثال: "فودافون بتعاني من بطء الدعم الفني (45%)، بينما أورانج بتتمدح في نفس النقطة (40%)."</li>
+<li><b>جرّب الأرقام 30/25 على الداتا الحقيقية</b> وعدّلها لو الفجوات طلعت قليلة أو كتيرة جدًا. دي مش أرقام نهائية.</li>
+<li>ابدأ على أول قطاع يجهز (أسبوع 6)، متستناش الـ 3 كلهم.</li>
+</ol>
+<div class="q l">3) لازم تتعلم إيه؟</div>
+<div class="scroll"><table>
+<tr><th>الموضوع</th><th>الوقت</th></tr>
+<tr><td>pandas متقدم: <code>pivot_table</code>، <code>groupby</code> متعدد المستويات، <code>unstack</code></td><td>2–3 أيام</td></tr>
+<tr><td>Threshold logic: إزاي تختار حدود منطقية مش عشوائية</td><td>يوم</td></tr>
+<tr><td>كتابة Business Insights (تحويل رقم لجملة مفيدة)</td><td>يوم</td></tr>
+</table></div>
+<p class="tag">جدولك: أسبوع 1–3 تعلّم · أسبوع 4–5 تجهّز الكود على داتا تجريبية · أسبوع 6 أول قطاع حقيقي · أسبوع 7 تسليم</p>
+</section>
+
+<!-- P6 -->
+<section class="p" id="p6">
+<h2>الشخص 6 — Dashboard والمقارنات</h2>
+<p class="tag">بتستلم: <code>model_output.csv</code> + <code>competitive_output.csv</code> + <code>gaps_summary.csv</code> · بتسلّم: <code>dashboard/app.py</code></p>
+<div class="q">1) هتعمل إيه بالضبط؟</div>
+<p style="margin:0">تبني تطبيق Streamlit يعرض نتايج الفريق كلها، وتختبره كويس قبل التسليم.</p>
+<ul class="det">
+<li><b>الفكرة:</b> إنت "واجهة" المشروع، والحاجة اللي الدكتور أو اللجنة هتشوفها. حتى لو الشغل التقني ممتاز، الواجهة هي اللي بتوصله.</li>
+<li><b>Streamlit:</b> مكتبة بايثون بتحوّل السكريبت لصفحة ويب من غير ما تتعلم HTML أو JavaScript.</li>
+<li><b>القسم 1: شركة لوحدها.</b> تختار شركة، تشوف أهم 5 مشاكل بتاعتها ورسمة خطية بتوضح الشكاوى على مدار الشهور.</li>
+<li><b>القسم 2: مقارنة داخل القطاع.</b> تختار قطاع، وتشوف Heatmap (جدول ملوّن): الصفوف مواضيع، الأعمدة شركات، واللون بيوضح نسبة الشكوى.</li>
+<li><b>القسم 3: الفجوات التنافسية.</b> جدول <code>gaps_summary.csv</code> بالجمل الجاهزة من الشخص 5.</li>
+<li><b>الفلاتر:</b> القطاع، الشركة، والفترة الزمنية. وكل تغيير في الفلتر لازم يحدّث الأقسام التلاتة.</li>
+<li><b>الاختبار:</b> جرّب كل فلتر بكل قيمة، وتأكد إن مفيش خطأ لما الاختيار يطلّع نتيجة فاضية.</li>
+<li><b>تكتيك مهم:</b> ابدأ بداتا وهمية من أول أسبوع، وإنت مستني الباقي. خلي الداتا الوهمية بنفس أعمدة جدول الـ Schema بالظبط، عشان لما الحقيقية توصل متغيّرش ولا سطر في الكود.</li>
+</ul>
+<div class="q h">2) إزاي؟</div>
+<ol>
+<li>ابني الهيكل بداتا وهمية من أول أسبوع، عشان متستناش حد.</li>
+<li>3 أقسام:
+ <ul>
+ <li><b>شركة لوحدها:</b> أهم 5 مشاكل + اتجاه زمني (<code>pd.Grouper</code> على التاريخ).</li>
+ <li><b>مقارنة داخل القطاع:</b> Heatmap بـ <code>px.imshow</code> لنسبة الشكوى/المديح لكل شركة في كل موضوع.</li>
+ <li><b>الفجوات التنافسية:</b> جدول <code>gaps_summary.csv</code> بالجمل الجاهزة.</li>
+ </ul></li>
+<li>ضيف فلاتر: القطاع، الشركة، الفترة الزمنية.</li>
+<li>أول ما الداتا الحقيقية توصل، استبدل الوهمية واختبر كل فلتر.</li>
+</ol>
+<div class="q l">3) لازم تتعلم إيه؟</div>
+<ul>
+<li>Streamlit: <code>st.sidebar</code> و <code>st.selectbox</code> و <code>st.dataframe</code> و <code>st.plotly_chart</code></li>
+<li>pandas: <code>merge</code> و <code>Grouper</code></li>
+<li>plotly express: خطوط وأعمدة و <code>imshow</code> للـ Heatmap</li>
+</ul>
+<p class="tag">جدولك: أسبوع 1 تعلّم Streamlit · أسبوع 2–4 الهيكل والـ Heatmap بداتا وهمية · أسبوع 5–6 ربط جزئي · أسبوع 7 دمج كل شيء</p>
+</section>
+</main>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الملف 2 — التايم لاين</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f3ec;--card:#fffdf8;--ink:#1d2a2e;--mute:#5d6b6f;--line:#e2dccd;--a:#0f6b5c;--b:#b4491f;--c:#2d4f8a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14191b;--card:#1c2326;--ink:#ece8de;--mute:#9aa8ab;--line:#2e393c;--a:#4fc3ad;--b:#ee8f66;--c:#86a8e6}}
+:root[data-theme="dark"]{--bg:#14191b;--card:#1c2326;--ink:#ece8de;--mute:#9aa8ab;--line:#2e393c;--a:#4fc3ad;--b:#ee8f66;--c:#86a8e6}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans Arabic',Tahoma,sans-serif;line-height:1.85;font-size:16px}
+main{max-width:860px;margin:auto;padding:24px 16px 60px}
+h1{font-size:1.9rem;margin:.2em 0 .6em}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+nav a{color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--card);padding:4px 14px;border-radius:999px;font-size:.9rem}
+.p{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--a);border-radius:14px;padding:6px 20px 18px;margin:26px 0}
+.p h2{font-size:1.35rem;margin:.6em 0 .2em}
+.lbl{font-weight:700;margin:14px 0 2px}
+.lbl.get{color:var(--a)}
+.lbl.give{color:var(--b);margin-top:16px}
+.p p{margin:.2em 0}
+ul{margin:.2em 0;padding-inline-start:1.4em}
+li{margin:.3em 0}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:520px}
+th,td{border:1px solid var(--line);padding:8px 12px;text-align:start;vertical-align:top}
+th{background:var(--bg)}
+code{direction:ltr;unicode-bidi:embed;background:var(--bg);padding:1px 6px;border-radius:5px;font-size:.88em}
+</style>
+</head>
+<body>
+<main>
+<h1>الملف 2 — التايم لاين</h1>
+<nav>
+<a href="#p1">الشخص 1</a><a href="#p2">الشخص 2</a><a href="#p3">الشخص 3</a><a href="#p4">الشخص 4</a><a href="#p5">الشخص 5</a><a href="#p6">الشخص 6</a><a href="#reserve">الاحتياطي</a><a href="#notes">ملاحظات</a>
+</nav>
+
+<!-- Person 1 -->
+<section class="p" id="p1">
+<h2>الشخص 1: جمع الداتا</h2>
+<p><b>بيستلم من:</b> محدش، هو البداية.</p>
+<div class="lbl">التفاصيل:</div>
+<ul>
+<li>من 1/10 لحد 3/10: يجهّز الـ dictionary ويكتب كود السحب.</li>
+<li>يوم 4/10: يبعت عينة 500 صف للأشخاص 2 و3 و4 عشان يجرّبوا عليها.</li>
+<li>من 4/10 لحد 10/10: يسحب الـ 9 تطبيقات.</li>
+<li>قبل التسليم: يتأكد إن كل تطبيق فيه 3000 تقييم على الأقل.</li>
+<li>بعد التسليم: يفضل جاهز يسحب زيادة لحد 22/10، لو الشخص 3 لقى تطبيق عدده قليل.</li>
+</ul>
+<p class="lbl give"><b>بيسلّم:</b> <code>raw_data.csv</code> للشخص 2 يوم <b>10/10</b>.</p>
+</section>
+
+<!-- Person 2 -->
+<section class="p" id="p2" style="border-top-color:var(--b)">
+<h2>الشخص 2: التطبيع اللغوي</h2>
+<p><b>بيستلم من:</b> الشخص 1 (<code>raw_data.csv</code> يوم 10/10).</p>
+<div class="lbl">التفاصيل:</div>
+<ul>
+<li>من 4/10 لحد 10/10: يتعلم Regex ويكتب الكود على عينة الـ 500 (تحضير).</li>
+<li>من 11/10 لحد 15/10: يشغّل الكود على الداتا الكاملة، على دفعات.</li>
+<li><b>نصيحة:</b> يبدأ بكشف الفرانكو والتعليم بس، والتحويل الكامل بعدين لو الوقت سمح.</li>
+</ul>
+<p class="lbl give"><b>بيسلّم:</b> <code>cleaned_a.csv</code> للشخص 3 يوم <b>15/10</b>.</p>
+</section>
+
+<!-- Person 3 -->
+<section class="p" id="p3" style="border-top-color:var(--c)">
+<h2>الشخص 3: التنضيف و EDA</h2>
+<p><b>بيستلم من:</b> الشخص 2 (<code>cleaned_a.csv</code> يوم 15/10).</p>
+<div class="lbl">التفاصيل:</div>
+<ul>
+<li>من 4/10 لحد 15/10: يتعلم pandas ويكتب كود التنضيف والرسومات على العينة (تحضير).</li>
+<li>يوم 16/10: أول حاجة يعدّ التقييمات لكل تطبيق، عشان أي نقص يظهر فورًا.</li>
+<li>من 16/10 لحد 22/10: ينضّف الداتا الكاملة ويعمل الـ EDA.</li>
+</ul>
+<p class="lbl give"><b>بيسلّم:</b> <code>cleaned_final.csv</code> للشخص 4 يوم <b>22/10</b>.</p>
+</section>
+
+<!-- Person 4 -->
+<section class="p" id="p4">
+<h2>الشخص 4: الموديل (أصعب دور)</h2>
+<p><b>بيستلم من:</b> الشخص 3 (<code>cleaned_final.csv</code> يوم 22/10).</p>
+<div class="lbl">التفاصيل:</div>
+<ul>
+<li>من 4/10 لحد 22/10: يتعلم BERTopic و Embeddings و Zero-shot، ويجرّب على العينة (تحضير).</li>
+<li>من 23/10 لحد 1/11 (10 أيام): يشتغل على Telecom.</li>
+<li>من 2/11 لحد 8/11: يشتغل على Payments.</li>
+<li>من 9/11 لحد 14/11: يشتغل على Delivery.</li>
+<li>من 15/11 لحد 18/11: يقيّم الدقة على 100–200 تعليق مصنّفين بإيده، ويظبّط.</li>
+</ul>
+<p class="lbl give"><b>بيسلّم:</b> على 4 مرات، للشخص 5 و6:</p>
+<ul>
+<li>يوم <b>1/11</b>: Telecom (تسليم بدري).</li>
+<li>يوم <b>8/11</b>: Payments.</li>
+<li>يوم <b>14/11</b>: Delivery.</li>
+<li>يوم <b>18/11</b>: <code>model_output.csv</code> النهائي كامل.</li>
+</ul>
+</section>
+
+<!-- Person 5 -->
+<section class="p" id="p5" style="border-top-color:var(--b)">
+<h2>الشخص 5: التحليل التنافسي</h2>
+<p><b>بيستلم من:</b> الشخص 4 (كل قطاع أول ما يسلّمه، من 1/11).</p>
+<div class="lbl">التفاصيل:</div>
+<ul>
+<li>من 4/10 لحد 31/10: يتعلم ويكتب الكود على داتا وهمية بنفس أعمدة الـ Schema (تحضير).</li>
+<li>من 1/11 لحد 18/11: يشتغل على كل قطاع أول ما يوصل، ويظبّط الحدود 30/25.</li>
+<li>من 19/11 لحد 21/11: يشغّل الكود على القطاعات التلاتة.</li>
+</ul>
+<p class="lbl give"><b>بيسلّم:</b> للشخص 6:</p>
+<ul>
+<li>يوم <b>8/11</b>: <code>gaps_summary.csv</code> لـ Telecom كنسخة تجريبية.</li>
+<li>يوم <b>21/11</b>: <code>competitive_output.csv</code> و <code>gaps_summary.csv</code> النهائيين.</li>
+</ul>
+</section>
+
+<!-- Person 6 -->
+<section class="p" id="p6" style="border-top-color:var(--c)">
+<h2>الشخص 6: Dashboard</h2>
+<p><b>بيستلم من:</b> الشخص 4 (<code>model_output.csv</code>) والشخص 5 (<code>competitive_output.csv</code> و <code>gaps_summary.csv</code>).</p>
+<div class="lbl">التفاصيل:</div>
+<ul>
+<li>من 4/10 لحد 31/10: يتعلم Streamlit ويبني الهيكل بداتا وهمية (تحضير).</li>
+<li>من 1/11 لحد 18/11: يربط كل قطاع أول ما يوصل، ويبدأ قسم الفجوات بنسخة Telecom التجريبية.</li>
+<li>من 19/11 لحد 24/11: يربط النسخة النهائية ويختبر كل الفلاتر.</li>
+</ul>
+<p class="lbl give"><b>بيسلّم:</b> <code>dashboard/app.py</code> جاهز للفريق كله يوم <b>24/11</b>.</p>
+</section>
+
+<!-- Reserve -->
+<section class="p" id="reserve">
+<h2>أيام الاحتياطي: من 25/11 لحد 1/12 (7 أيام)</h2>
+<p>تصليح أي مشكلة، كتابة README، وتجهيز العرض.</p>
+</section>
+
+<!-- Notes -->
+<section class="p" id="notes" style="border-top-color:var(--b)">
+<h2>ملاحظات مهمة (وليه)</h2>
+<div class="scroll"><table>
+<thead><tr><th>الملاحظات</th><th>السبب</th></tr></thead>
+<tbody>
+<tr><td>الشخص 1 هو اللي هيسلّم عينة 500 صف يوم 4/10</td><td>عشان 2 و3 و4 يجرّبوا كودهم على داتا حقيقية</td></tr>
+<tr><td>الشخص 4 يسلّم قطاع قطاع</td><td>عشان 5 و6 ميستناش الموديل كله</td></tr>
+<tr><td>الشخص 5 و6 هيحضّروا داتا وهمية ويشتغلوا عليها لحد ما الداتا الحقيقية توصل</td><td>عشان ميقعدوش مستنيين الشخص 4 من غير شغل، وبشرط إن الداتا الوهمية تكون بنفس أعمدة الـ Schema، عشان لما الحقيقية توصل الكود يشتغل من غير أي تعديل</td></tr>
+</tbody>
+</table></div>
+</section>
+</main>
+</body>
+</html>
