@@ -1,0 +1,19 @@
+# ===== الكل =====
+pandas
+
+# ===== الشخص 1: جمع الداتا =====
+google-play-scraper
+
+# ===== الشخص 3: EDA =====
+matplotlib
+seaborn
+
+# ===== الشخص 6: Dashboard =====
+streamlit
+plotly
+
+# ===== الشخص 4: الموديل (تقيلة، نزّلها لو إنت الشخص 4 بس) =====
+sentence-transformers
+bertopic
+scikit-learn
+transformers
