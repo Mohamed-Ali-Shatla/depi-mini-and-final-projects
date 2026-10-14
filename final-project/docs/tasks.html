@@ -87,7 +87,7 @@ code{direction:ltr;unicode-bidi:embed;background:var(--bg);padding:1px 6px;borde
 <tr><th>العمود</th><th>مين بيضيفه</th><th>القيمة</th></tr>
 <tr><td><code>review_id</code></td><td>1</td><td>رقم التقييم من Google Play</td></tr>
 <tr><td><code>app_name</code></td><td>1</td><td>اسم التطبيق بالإنجليزي زي ما في الـ dictionary (مثال: <code>Vodafone Egypt</code>)</td></tr>
-<tr><td><code>domain</code></td><td>1</td><td><code>Telecom</code> / <code>Payments</code> / <code>Delivery</code></td></tr>
+<tr><td><code>domain</code></td><td>1</td><td><code>Telecom</code> / <code>Payments</code> / <code>Banking</code> / <code>E-commerce</code> / <code>Transport Services</code></td></tr>
 <tr><td><code>rating</code></td><td>1</td><td>رقم من 1 لـ 5</td></tr>
 <tr><td><code>date</code></td><td>1</td><td>بالشكل <code>2026-03-14</code></td></tr>
 <tr><td><code>review_text</code></td><td>1</td><td>النص الأصلي زي ما هو</td></tr>
@@ -105,15 +105,37 @@ code{direction:ltr;unicode-bidi:embed;background:var(--bg);padding:1px 6px;borde
 <tr><td><code>gaps_summary.csv</code></td><td dir="ltr"><code>domain, topic_label, weak_app, weak_pct, strong_app, strong_pct, gap_size, sentence</code></td></tr>
 </table></div>
 
-<div class="q l">3) قواعد بسيطة تمنع المشاكل</div>
+<div class="q l">3) القطاعات والتطبيقات (16 تطبيق في 5 قطاعات)</div>
+<p style="margin:0 0 6px;color:var(--mute);font-size:.9rem">ده الـ dictionary الرسمي للمشروع. أسماء التطبيقات والقطاعات تتكتب بالظبط زي ما هنا في كل الملفات.</p>
+<div class="scroll"><table>
+<tr><th>القطاع (<code>domain</code>)</th><th>التطبيق (<code>app_name</code>)</th><th>Package ID</th></tr>
+<tr><td rowspan="3"><code>Telecom</code></td><td><code>Vodafone Egypt</code></td><td dir="ltr"><code>com.emeint.android.myservices</code></td></tr>
+<tr><td><code>Orange Egypt</code></td><td dir="ltr"><code>com.orange.mobinilandme</code></td></tr>
+<tr><td><code>WE</code></td><td dir="ltr"><code>com.ucare.we</code></td></tr>
+<tr><td rowspan="3"><code>Payments</code></td><td><code>Etisalat Cash</code></td><td dir="ltr"><code>com.etisalat.flous</code></td></tr>
+<tr><td><code>Instapay</code></td><td dir="ltr"><code>com.egyptianbanks.instapay</code></td></tr>
+<tr><td><code>Fawry</code></td><td dir="ltr"><code>com.fawry.myfawry</code></td></tr>
+<tr><td rowspan="3"><code>Banking</code></td><td><code>NBE</code></td><td dir="ltr"><code>com.ofss.obdx.and.nbe.com.eg</code></td></tr>
+<tr><td><code>CIB</code></td><td dir="ltr"><code>com.cibeg.ddc1.digitalbanking.live</code></td></tr>
+<tr><td><code>Banque Misr</code></td><td dir="ltr"><code>com.BanqueMisr.MobileBanking</code></td></tr>
+<tr><td rowspan="3"><code>E-commerce</code></td><td><code>Amazon</code></td><td dir="ltr"><code>com.amazon.mShop.android.shopping</code></td></tr>
+<tr><td><code>Jumia</code></td><td dir="ltr"><code>com.jumia.android</code></td></tr>
+<tr><td><code>Noon</code></td><td dir="ltr"><code>com.noon.buyerapp</code></td></tr>
+<tr><td rowspan="4"><code>Transport Services</code></td><td><code>Uber</code></td><td dir="ltr"><code>com.ubercab</code></td></tr>
+<tr><td><code>inDrive</code></td><td dir="ltr"><code>sinet.startup.inDriver</code></td></tr>
+<tr><td><code>Careem</code></td><td dir="ltr"><code>com.careem.acma</code></td></tr>
+<tr><td><code>DiDi</code></td><td dir="ltr"><code>com.didiglobal.passenger</code></td></tr>
+</table></div>
+
+<div class="q">4) قواعد بسيطة تمنع المشاكل</div>
 <ul>
-<li>أسماء الأعمدة إنجليزي، حروف صغيرة، وبينها <code>_</code>. والقيم المسموحة تتكتب بالضبط (<code>Negative</code> مش <code>negative</code>).</li>
+<li>أسماء الأعمدة إنجليزي، حروف صغيرة، وبينها <code>_</code>. والقيم المسموحة تتكتب بالضبط (<code>Negative</code> مش <code>negative</code>، و<code>Transport Services</code> بمسافة بين الكلمتين، و<code>E-commerce</code> بشرطة).</li>
 <li>احفظ أي CSV بالشكل ده: <code>df.to_csv(path, index=False, encoding="utf-8-sig")</code> عشان العربي يفضل سليم.</li>
 <li>ملف الداتا بيعدله صاحبه بس، والباقي بيقروه. لو محتاج تغيير في الأعمدة، كلّم الفريق الأول.</li>
 <li>الملفات هتكون أقل من 100MB فينفع تترفع على GitHub عادي.</li>
 </ul>
 
-<div class="q">4) Git بأبسط شكل</div>
+<div class="q h">5) Git بأبسط شكل</div>
 <ol>
 <li><code>main</code> فيه الشغل الجاهز بس، محدش بيشتغل عليه مباشرة.</li>
 <li>كل شخص بيعمل branch باسمه ويشتغل جواه.</li>
@@ -131,18 +153,18 @@ git push -u origin person1-scraping   # وبعدها Pull Request من GitHub</d
 <h2>الشخص 1 — جمع الداتا</h2>
 <p class="tag">بتسلّم: <code>data/raw/raw_data.csv</code> ← للشخص 2</p>
 <div class="q">1) هتعمل إيه بالضبط؟</div>
-<p style="margin:0">تسحب تقييمات الـ 9 تطبيقات من Google Play (كل النجوم 1–5)، بواقع 3000–5000 تقييم لكل تطبيق، وتضيف عمودي <code>domain</code> و <code>review_type</code>.</p>
+<p style="margin:0">تسحب تقييمات الـ 16 تطبيق (5 قطاعات) من Google Play (كل النجوم 1–5)، بواقع 3000–5000 تقييم لكل تطبيق، وتضيف عمودي <code>domain</code> و <code>review_type</code>.</p>
 <ul class="det">
 <li><b>الفكرة:</b> إنت اللي بتجيب المادة الخام للمشروع كله. لو داتاك ناقصة أو غلط، كل الفريق هيتأثر.</li>
 <li><b>بتسحب إيه؟</b> لكل تقييم: <code>review_id</code>، <code>app_name</code>، <code>rating</code> من 1 لـ 5، <code>date</code>، و<code>review_text</code>. تسحب <b>كل النجوم</b> مش السلبي بس، عشان الإيجابي هو نقاط القوة اللي هنقارن بيها.</li>
-<li><b>الأعمدة اللي إنت اللي بتضيفها:</b> <code>domain</code> (Telecom / Payments / Delivery) من الـ dictionary، و<code>review_type</code> من الـ rating (1–2 سلبي، 3 محايد، 4–5 إيجابي).</li>
+<li><b>الأعمدة اللي إنت اللي بتضيفها:</b> <code>domain</code> (Telecom / Payments / Banking / E-commerce / Transport Services) من الـ dictionary، و<code>review_type</code> من الـ rating (1–2 سلبي، 3 محايد، 4–5 إيجابي).</li>
 <li><b>مثال صف بعد الشغل:</b> <code>a1b2 | Vodafone Egypt | Telecom | 2 | 2026-03-14 | الشبكة ضعيفة جدا | Negative</code></li>
 <li><b>خلي بالك:</b> اللغة المصرية والبلد (<code>lang='ar'</code>, <code>country='eg'</code>) في إعدادات السحب، وسجّل في ملف صغير كام تقييم اتسحب لكل تطبيق.</li>
-<li><b>الهدف الرقمي:</b> 9 تطبيقات × 3000–5000 = حوالي 27,000 إلى 45,000 تقييم في ملف واحد.</li>
+<li><b>الهدف الرقمي:</b> 16 تطبيق × 3000–5000 = حوالي 48,000 إلى 80,000 تقييم في ملف واحد.</li>
 </ul>
 <div class="q h">2) إزاي؟</div>
 <ol>
-<li>اعمل dictionary فيه كل تطبيق: اسمه، الـ package id بتاعه، وقطاعه.</li>
+<li>اعمل dictionary فيه كل تطبيق: اسمه، الـ package id بتاعه، وقطاعه (الـ 16 تطبيق الموجودين في جدول القطاعات والتطبيقات فوق).</li>
 <li>اكتب loop واحد يعدّي على الـ dictionary ويسحب بـ <code>google-play-scraper</code> (من غير تكرار كود لكل تطبيق).</li>
 <li>ضيف <code>domain</code> من الـ dictionary، وضيف <code>review_type</code> من الـ rating.</li>
 <li>شيل التكرار (<code>drop_duplicates</code> على <code>review_id</code>) واحفظ CSV.</li>
@@ -154,7 +176,7 @@ git push -u origin person1-scraping   # وبعدها Pull Request من GitHub</d
 <li>pandas: قراءة وكتابة CSV، إضافة أعمدة، <code>drop_duplicates</code></li>
 <li>مكتبة <code>google-play-scraper</code> (اقرا الـ README بتاعها، فيه مثال جاهز)</li>
 </ul>
-<p class="tag">جدولك: أسبوع 1 سحب العينة · أسبوع 2 Telecom + Payments · أسبوع 3 Delivery · أسبوع 4 مراجعة الداتا الخام</p>
+<p class="tag">جدولك: من 1/10 لحد 4/10 الـ dictionary وعينة الـ 500 · من 4/10 لحد 10/10 سحب الـ 16 تطبيق قطاع قطاع (Telecom ثم Payments ثم Banking ثم E-commerce ثم Transport Services) · قبل التسليم مراجعة الداتا الخام والتأكد من 3000 تقييم لكل تطبيق</p>
 </section>
 
 <!-- P2 -->
@@ -187,7 +209,7 @@ git push -u origin person1-scraping   # وبعدها Pull Request من GitHub</d
 <li>اكتب function <code>normalize_arabic</code>: توحيد الألف (أ إ آ ← ا)، الياء والألف المقصورة، التاء المربوطة، وشيل التشكيل والتطويل والحروف المكررة.</li>
 <li>اكتب function تكتشف الفرانكو-عربي (نسبة الحروف اللاتينية + كلمات مفتاحية زي 3ala, mesh, betaa3), وقرر: تحوّلها لعربي ولا تعلّم عليها في عمود <code>is_franco</code>.</li>
 <li>طبّق الاتنين بـ <code>df.apply</code> على العمود <code>review_text</code> وحط النتيجة في <code>normalized_text</code> و<code>is_franco</code>.</li>
-<li>جرّب الأول على عينة الـ 500، وبعدين على الداتا كلها. لو بطيء، اشتغل على دفعات (batches).</li>
+<li>جرّب الأول على عينة الـ 500، وبعدين على الداتا كلها. لو بطيء، اشتغل على دفعات (batches)، دفعة لكل قطاع من الـ 5 (الداتا دلوقتي حوالي 48–80 ألف تقييم).</li>
 </ol>
 <div class="q l">3) لازم تتعلم إيه؟</div>
 <ul>
@@ -195,7 +217,7 @@ git push -u origin person1-scraping   # وبعدها Pull Request من GitHub</d
 <li>الحروف العربية و Unicode ranges (النطاق <code>\u0600-\u06FF</code>)</li>
 <li>pandas: <code>apply</code> و <code>str.replace</code></li>
 </ul>
-<p class="tag">جدولك: أسبوع 1 Regex والعينة · أسبوع 2 Telecom · أسبوع 3 Payments + Delivery · أسبوع 4 تسليم كامل</p>
+<p class="tag">جدولك: من 4/10 لحد 10/10 Regex والعينة · من 11/10 لحد 15/10 تشغيل الكود على الـ 5 قطاعات دفعة دفعة · يوم 15/10 تسليم <code>cleaned_a.csv</code> كامل</p>
 </section>
 
 <!-- P3 -->
@@ -248,23 +270,24 @@ git push -u origin person1-scraping   # وبعدها Pull Request من GitHub</d
 <li><b>الفكرة:</b> الموديل بيحوّل آلاف التعليقات لأرقام قابلة للمقارنة: "التعليق ده عن الدعم الفني، وسلبي، وخطير".</li>
 <li><b>Topic Modeling:</b> الكمبيوتر بيجمّع التعليقات المتشابهة في مجموعات (topics) من غير ما تقوله المواضيع. مثلاً تطلع مجموعة كلماتها "الشبكة، ضعيفة، بتقطع"، وإنت بتسميها "استقرار الشبكة".</li>
 <li><b>ليه لكل قطاع مش لكل شركة؟</b> عشان المواضيع تبقى نفسها لكل شركات القطاع، وكده نقدر نقارن فودافون بأورانج في نفس الموضوع.</li>
-<li><b>تسمية المواضيع:</b> شغل يدوي بإيدك، والاسم لازم يكون عام ("سرعة الدعم الفني") مش خاص بشركة.</li>
+<li><b>تسمية المواضيع:</b> شغل يدوي بإيدك، والاسم لازم يكون عام ("سرعة الدعم الفني") مش خاص بشركة. وكل قطاع مواضيعه مختلفة، مثلاً: Banking (الـ OTP وتسجيل الدخول)، E-commerce (التوصيل والمرتجعات)، Transport Services (التسعير وسلوك السواق). دي أمثلة بس، والموديل هو اللي يطلّع المواضيع الفعلية من الداتا.</li>
+<li><b>ترتيب الشغل:</b> Telecom الأول وياخد 10 أيام، لأنك فيه بتبني الـ pipeline كلها وتظبطها. بعده Payments ثم Banking ثم E-commerce ثم Transport Services بنفس الكود، فكل قطاع ياخد 4–5 أيام ومعظم وقته في تسمية المواضيع. Payments و Transport Services ياخدوا 5 أيام (الأول لأنه أول إعادة استخدام للكود، والتاني لأن فيه 4 تطبيقات).</li>
 <li><b>Severity للسلبي:</b> "الشبكة وحشة شوية" = Low، "اتخصم مني فلوس من غير سبب" = High. بتبدأ بقواعد كلمات (سرقة، خصم، نصب ← High) وبعدين بموديل أو LLM API.</li>
 <li><b>الإيجابي والمحايد:</b> <code>severity</code> بيفضل فاضي. مش هنصنّف قوة المديح دلوقتي عشان نبسّط، ولو فضل وقت في الآخر نضيفها.</li>
-<li><b>التقييم:</b> صنّف 100–200 تعليق بإيدك وقارن بنتيجة الموديل (Precision/Recall/F1) عشان تعرف دقته.</li>
+<li><b>التقييم:</b> صنّف تعليقات بإيدك وقارن بنتيجة الموديل (Precision/Recall/F1) عشان تعرف دقته. ولأن القطاعات بتتسلّم واحد واحد، صنّف حوالي 30–40 تعليق من كل قطاع أول ما تخلصه (الإجمالي 150–200 من الـ 5 قطاعات)، وفي الآخر راجع الإجمالي وظبّط.</li>
 <li><b>المدخل:</b> <code>cleaned_final.csv</code> · <b>المخرج:</b> <code>model_output.csv</code> (نفس أعمدة <code>cleaned_final.csv</code> + عمودين جداد بس: <code>topic_label</code> و<code>severity</code>).</li>
 </ul>
 <div class="q h">2) إزاي؟</div>
 <p style="margin:0"><b>المرحلة أ: المواضيع (لكل قطاع، مش لكل شركة)</b></p>
 <ol>
-<li>افصل الداتا حسب <code>domain</code> (3 مجموعات).</li>
+<li>افصل الداتا حسب <code>domain</code> (5 مجموعات: Telecom و Payments و Banking و E-commerce و Transport Services).</li>
 <li>لكل قطاع: حوّل النصوص لـ embeddings بموديل <code>aubmindlab/bert-base-arabertv02</code>، وشغّل BERTopic على تعليقات القطاع كلها مع بعض (عشان المواضيع تبقى موحدة وتنفع للمقارنة).</li>
 <li>سمّي كل topic بإيدك ("سرعة الدعم الفني"، "استقرار الشبكة"). <b>الاسم لازم يكون عام</b> ينفع لكل شركات القطاع، وادمج المتشابه.</li>
 </ol>
 <p style="margin:8px 0 0"><b>المرحلة ب: الخطورة والمديح</b></p>
 <ol start="4">
 <li>للسلبي: قواعد كلمات (Rule-based) + Zero-shot أو LLM API لتصنيف High/Medium/Low.</li>
-<li>قيّم دقة شغلك على 100–200 تعليق صنّفتهم بإيدك (Precision/Recall/F1).</li>
+<li>قيّم دقة شغلك (Precision/Recall/F1) بتعليقات صنّفتها بإيدك: حوالي 30–40 من كل قطاع أول ما تخلصه (إجمالي 150–200)، وفي آخر يومين راجع الإجمالي وظبّط.</li>
 </ol>
 <div class="q l">3) لازم تتعلم إيه؟</div>
 <div class="scroll"><table>
@@ -275,7 +298,7 @@ git push -u origin person1-scraping   # وبعدها Pull Request من GitHub</d
 <tr><td>Zero-shot classification + Prompt engineering</td><td>يومين</td></tr>
 <tr><td>Precision/Recall/F1 عمليًا</td><td>يوم–يومين</td></tr>
 </table></div>
-<p class="tag">جدولك: أسبوع 1–3 تعلّم وتجارب على عينة · أسبوع 4–5 Topics (Telecom ثم الباقي) · أسبوع 6 Severity · أسبوع 7 تسليم كامل. <b>سلّم أول قطاع جاهز بدري للشخص 5.</b></p>
+<p class="tag">جدولك: من 4/10 لحد 22/10 تعلّم وتجارب على عينة · من 23/10 لحد 19/11 قطاع قطاع (Topics + Severity): Telecom ثم Payments ثم Banking ثم E-commerce ثم Transport Services · من 20/11 لحد 21/11 مراجعة الدقة وتسليم كامل. <b>سلّم كل قطاع للشخص 5 و 6 أول ما يجهز.</b></p>
 </section>
 
 <!-- P5 -->
@@ -300,8 +323,8 @@ git push -u origin person1-scraping   # وبعدها Pull Request من GitHub</d
 <li>اكتب function <code>detect_gap</code>: لو شركة A نسبة الشكوى عندها ≥ 30% وشركة B في نفس القطاع والموضوع نسبة المديح ≥ 25%، سجّل فجوة.</li>
 <li>رتّب الفجوات بحجم الفرق بين النسبتين.</li>
 <li>اكتب لكل فجوة جملة، مثال: "فودافون بتعاني من بطء الدعم الفني (45%)، بينما أورانج بتتمدح في نفس النقطة (40%)."</li>
-<li><b>جرّب الأرقام 30/25 على الداتا الحقيقية</b> وعدّلها لو الفجوات طلعت قليلة أو كتيرة جدًا. دي مش أرقام نهائية.</li>
-<li>ابدأ على أول قطاع يجهز (أسبوع 6)، متستناش الـ 3 كلهم.</li>
+<li><b>جرّب الأرقام 30/25 على الداتا الحقيقية</b> وعدّلها لو الفجوات طلعت قليلة أو كتيرة جدًا. دي مش أرقام نهائية، بس ثبّتها قبل 22/11 عشان التشغيل النهائي على الـ 5 قطاعات.</li>
+<li>ابدأ على أول قطاع يجهز (Telecom يوم 1/11)، متستناش الـ 5 كلهم.</li>
 </ol>
 <div class="q l">3) لازم تتعلم إيه؟</div>
 <div class="scroll"><table>
@@ -310,7 +333,7 @@ git push -u origin person1-scraping   # وبعدها Pull Request من GitHub</d
 <tr><td>Threshold logic: إزاي تختار حدود منطقية مش عشوائية</td><td>يوم</td></tr>
 <tr><td>كتابة Business Insights (تحويل رقم لجملة مفيدة)</td><td>يوم</td></tr>
 </table></div>
-<p class="tag">جدولك: أسبوع 1–3 تعلّم · أسبوع 4–5 تجهّز الكود على داتا تجريبية · أسبوع 6 أول قطاع حقيقي · أسبوع 7 تسليم</p>
+<p class="tag">جدولك: من 4/10 لحد 31/10 تعلّم وتجهيز الكود على داتا وهمية بنفس أعمدة الـ Schema وتغطي الـ 5 قطاعات · من 1/11 لحد 21/11 شغل على كل قطاع أول ما يوصل (Telecom يوم 1/11، وتسلّم منه نسخة تجريبية يوم 8/11) وضبط الحدود 30/25 · من 22/11 لحد 23/11 تشغيل نهائي على الـ 5 قطاعات وتسليم</p>
 </section>
 
 <!-- P6 -->
@@ -326,8 +349,8 @@ git push -u origin person1-scraping   # وبعدها Pull Request من GitHub</d
 <li><b>القسم 2: مقارنة داخل القطاع.</b> تختار قطاع، وتشوف Heatmap (جدول ملوّن): الصفوف مواضيع، الأعمدة شركات، واللون بيوضح نسبة الشكوى.</li>
 <li><b>القسم 3: الفجوات التنافسية.</b> جدول <code>gaps_summary.csv</code> بالجمل الجاهزة من الشخص 5.</li>
 <li><b>الفلاتر:</b> القطاع، الشركة، والفترة الزمنية. وكل تغيير في الفلتر لازم يحدّث الأقسام التلاتة.</li>
-<li><b>الاختبار:</b> جرّب كل فلتر بكل قيمة، وتأكد إن مفيش خطأ لما الاختيار يطلّع نتيجة فاضية.</li>
-<li><b>تكتيك مهم:</b> ابدأ بداتا وهمية من أول أسبوع، وإنت مستني الباقي. خلي الداتا الوهمية بنفس أعمدة جدول الـ Schema بالظبط، عشان لما الحقيقية توصل متغيّرش ولا سطر في الكود.</li>
+<li><b>الاختبار:</b> جرّب كل فلتر بكل قيمة (5 قطاعات و16 تطبيق)، وتأكد إن مفيش خطأ لما الاختيار يطلّع نتيجة فاضية.</li>
+<li><b>تكتيك مهم:</b> ابدأ بداتا وهمية من أول أسبوع، وإنت مستني الباقي. خلي الداتا الوهمية بنفس أعمدة جدول الـ Schema بالظبط، عشان لما الحقيقية توصل متغيّرش ولا سطر في الكود. وخليها تغطي الـ 5 قطاعات والـ 16 تطبيق بأسمائهم الحقيقية. Transport Services فيه 4 شركات مش 3، فتأكد إن الـ Heatmap بيشتغل مع 3 أو 4 أعمدة.</li>
 </ul>
 <div class="q h">2) إزاي؟</div>
 <ol>
@@ -347,7 +370,7 @@ git push -u origin person1-scraping   # وبعدها Pull Request من GitHub</d
 <li>pandas: <code>merge</code> و <code>Grouper</code></li>
 <li>plotly express: خطوط وأعمدة و <code>imshow</code> للـ Heatmap</li>
 </ul>
-<p class="tag">جدولك: أسبوع 1 تعلّم Streamlit · أسبوع 2–4 الهيكل والـ Heatmap بداتا وهمية · أسبوع 5–6 ربط جزئي · أسبوع 7 دمج كل شيء</p>
+<p class="tag">جدولك: من 4/10 لحد 31/10 تعلّم Streamlit وبناء الهيكل والـ Heatmap بداتا وهمية · من 1/11 لحد 23/11 ربط كل قطاع أول ما يوصل (وقسم الفجوات بنسخة Telecom التجريبية من 8/11) · من 24/11 لحد 26/11 ربط النسخة النهائية واختبار كل الفلاتر وتسليم <code>app.py</code></p>
 </section>
 </main>
 </body>
