@@ -57,6 +57,8 @@ raw (Olist DB) ──► processed ──► cleaned ──► preprocessed ─�
 | Cleaned data | `data/cleaned/` | `cleaned_ecommerce_data.csv` | Notebook 2 |
 | Preprocessed data | `data/preprocessed/` | `preprocessed.csv` | Notebook 3 |
 
+> The dashboard (Notebook 5) reads the master dataset from `data/processed/brazilian_ecommerce_data.csv` and applies its own light cleaning (see *Interactive Dashboard*).
+
 ---
 
 ## 📓 Notebooks
@@ -67,8 +69,58 @@ raw (Olist DB) ──► processed ──► cleaned ──► preprocessed ─�
 | 2 | `2_cleaned_data_(salma mamdouh).ipynb` | Data cleaning | Salma Mamdouh |
 | 3 | `3_preprocessed(Kareem_Elawaadi).ipynb` | Data preprocessing | Kareem Elawaadi |
 | 4 | `4_EDA(Omar_tamer).ipynb` | Exploratory Data Analysis | Omar Tamer |
-| 5 | `5_Dashboard(Habiba Sameh).ipynb` | Interactive dashboard | Habiba Sameh |
+| 5 | `5_Dashboard(Habiba Sameh).ipynb` | Professional interactive Plotly Dash dashboard (KPIs, insights, 7 charts, filters) | Habiba Sameh |
 | 6 | `6_Review_Prediction_Model_(Habiba Sameh).ipynb` | Review prediction model | Habiba Sameh |
+
+---
+
+## 📊 Interactive Dashboard
+
+A professional, multi-view **Plotly Dash** dashboard (`Dashboard/5_Dashboard(Habiba Sameh).ipynb`) built on the master dataset in `data/processed/brazilian_ecommerce_data.csv`.
+
+### Features
+
+| Section | What it shows |
+|---------|---------------|
+| **KPI strip** | Total sales, orders, average order value, average review score, average delivery time, on-time delivery % |
+| **Key insights** | Auto-generated business takeaways that update with every filter (top category, peak month, category concentration, late-delivery impact on reviews, freight share) |
+| **Sales trend** | Monthly sales, order volume and a 3-month moving average |
+| **Category analysis** | Top 10 categories by sales + a bubble matrix (average price vs. average review, sized by sales) |
+| **Customer behaviour** | Weekday × hour heatmap of order activity |
+| **Customer experience** | Review score distribution, delivery time by review score, monthly on-time delivery rate |
+
+**Interactivity:** multi-select filters for **year** and **product category**, plus a one-click **reset**. Every KPI, insight and chart is driven by the same filtered slice, so all views stay consistent.
+
+### Metric definitions
+
+| Metric | Definition |
+|--------|------------|
+| Sales | Sum of `price` over order items (freight excluded) |
+| Orders | Unique `order_id` count |
+| Average order value | Mean of per-order total `price` |
+| Avg review | Mean `review_score` per unique order |
+| Delivery time | `order_delivered_customer_date − order_purchase_timestamp` (delivered orders only) |
+| On-time % | Delivered orders with delivery date ≤ `order_estimated_delivery_date` |
+
+### Data rules applied in the dashboard
+
+- Cancelled and unavailable orders are excluded (no realised revenue).
+- Months at the edges of the dataset with very few records (< 500 order lines, e.g. Sep–Dec 2016 and Sep 2018) are dropped so they don't distort trends.
+- Reviews and delivery metrics are computed per unique order, since the dataset has one row per order item.
+- Items without a category are labelled *Unknown* and hidden from category charts.
+
+### Run the dashboard
+
+```bash
+pip install -r requirements.txt
+jupyter notebook Dashboard/"5_Dashboard(Habiba Sameh).ipynb"
+```
+
+Run all cells, then open **http://127.0.0.1:8070**.
+The notebook looks for the data file automatically (absolute local path → `../data/processed/` → `data/processed/` → next to the notebook). If your file lives elsewhere, edit `DATA_CANDIDATES` in the *Configuration* cell.
+
+> 📸 Add a screenshot of the dashboard to the repo (e.g. `Dashboard/dashboard_preview.png`) and reference it here:
+> `![Dashboard preview](Dashboard/dashboard_preview.png)`
 
 ---
 
@@ -98,5 +150,5 @@ raw (Olist DB) ──► processed ──► cleaned ──► preprocessed ─�
 - [x] Data cleaning
 - [x] Data preprocessing
 - [x] Exploratory Data Analysis (EDA)
-- [x] Interactive dashboard (`Dashboard/`)
+- [x] Professional interactive dashboard (`Dashboard/`) — KPIs, auto-insights, filters, 7 charts
 - [x] Review prediction model (`Model/`)
