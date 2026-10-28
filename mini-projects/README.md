@@ -1,6 +1,6 @@
 # 🛒 Brazilian E-Commerce Sales Analysis
 
-An end-to-end Data Science project analyzing Brazilian e-commerce transactions, customer reviews, and sales performance to extract business insights, build an interactive dashboard, and train a review prediction model.
+An end-to-end Data Science project analyzing Brazilian e-commerce transactions, customer reviews, and sales performance to extract business insights, build an interactive dashboard, forecast next-month sales, and train a review prediction model.
 
 ---
 
@@ -10,7 +10,7 @@ An end-to-end Data Science project analyzing Brazilian e-commerce transactions, 
 mini-projects/
 │
 ├── Dashboard/
-│   └── 5_Dashboard(Habiba Sameh).ipynb                 # Interactive dashboard
+│   └── 5_Dashboard.ipynb                               # Interactive dashboard
 │
 ├── data/
 │   ├── raw/
@@ -24,15 +24,24 @@ mini-projects/
 │       └── preprocessed.csv                            # Dataset after preprocessing, ready for modeling
 │
 ├── Model/
-│   └── 6_Review_Prediction_Model_(Habiba Sameh).ipynb  # Review prediction model
+│   ├── Next_Month_Predeiction_Model/
+│   │   ├── 6_Next_Month_Predeiction_Model.ipynb        # Next-month sales forecasting notebook
+│   │   ├── app.py                                      # App for the sales forecasting model
+│   │   └── sales_forecast_model.pkl                    # Trained sales forecasting model
+│   │
+│   └── Review_Predection_Model/
+│       ├── 7_review_Predection_Model.ipynb             # Review prediction notebook
+│       ├── app.py                                      # App for the review prediction model
+│       └── bad_review_pipeline.pkl                     # Trained bad-review prediction pipeline
 │
 ├── notebooks/
-│   ├── 1_data_querying_and_export_(mohamed_shatla).ipynb   # SQL data extraction & master dataset export
-│   ├── 2_cleaned_data_(salma mamdouh).ipynb                # Data cleaning
-│   ├── 3_preprocessed(Kareem_Elawaadi).ipynb               # Data preprocessing
-│   ├── 4_EDA(Omar_tamer).ipynb                             # Exploratory Data Analysis
-│   ├── 5_Dashboard(Habiba Sameh).ipynb                     # Dashboard
-│   └── 6_Review_Prediction_Model_(Habiba Sameh).ipynb      # Review prediction model
+│   ├── 1_data_querying_and_export.ipynb                # SQL data extraction & master dataset export
+│   ├── 2_cleaned_data.ipynb                            # Data cleaning
+│   ├── 3_preprocessed.ipynb                            # Data preprocessing
+│   ├── 4_EDA.ipynb                                     # Exploratory Data Analysis
+│   ├── 5_Dashboard.ipynb                               # Dashboard
+│   ├── 6_Next_Month_Predeiction_Model.ipynb            # Next-month sales forecasting
+│   └── 7_review_Predection_Model.ipynb                 # Review prediction model
 │
 ├── sql/
 │   └── master_query.sql                                # SQL query used to build the master dataset
@@ -46,8 +55,8 @@ mini-projects/
 ## 🔄 Data Pipeline
 
 ```text
-raw (Olist DB) ──► processed ──► cleaned ──► preprocessed ──► EDA / Dashboard / Model
-   SQL query        Notebook 1    Notebook 2    Notebook 3      Notebooks 4, 5, 6
+raw (Olist DB) ──► processed ──► cleaned ──► preprocessed ──► EDA / Dashboard / Models
+   SQL query        Notebook 1    Notebook 2    Notebook 3      Notebooks 4, 5, 6, 7
 ```
 
 | Stage | Folder | File | Produced by |
@@ -65,18 +74,19 @@ raw (Olist DB) ──► processed ──► cleaned ──► preprocessed ─�
 
 | # | Notebook | Description | Author |
 |---|----------|-------------|--------|
-| 1 | `1_data_querying_and_export_(mohamed_shatla).ipynb` | SQL data extraction & master dataset export | Mohamed Shatla |
-| 2 | `2_cleaned_data_(salma mamdouh).ipynb` | Data cleaning | Salma Mamdouh |
-| 3 | `3_preprocessed(Kareem_Elawaadi).ipynb` | Data preprocessing | Kareem Elawaadi |
-| 4 | `4_EDA(Omar_tamer).ipynb` | Exploratory Data Analysis | Omar Tamer |
-| 5 | `5_Dashboard(Habiba Sameh).ipynb` | Professional interactive Plotly Dash dashboard (KPIs, insights, 7 charts, filters) | Habiba Sameh |
-| 6 | `6_Review_Prediction_Model_(Habiba Sameh).ipynb` | Review prediction model | Habiba Sameh |
+| 1 | `1_data_querying_and_export.ipynb` | SQL data extraction & master dataset export | Mohamed Shatla |
+| 2 | `2_cleaned_data.ipynb` | Data cleaning | Salma Mamdouh |
+| 3 | `3_preprocessed.ipynb` | Data preprocessing | Kareem Elawaadi |
+| 4 | `4_EDA.ipynb` | Exploratory Data Analysis | Omar Tamer |
+| 5 | `5_Dashboard.ipynb` | Professional interactive Plotly Dash dashboard (KPIs, insights, 7 charts, filters) | Habiba Sameh |
+| 6 | `6_Next_Month_Predeiction_Model.ipynb` | Next-month sales forecasting model | _add author_ |
+| 7 | `7_review_Predection_Model.ipynb` | Review prediction model (bad-review classifier) | _add author_ |
 
 ---
 
 ## 📊 Interactive Dashboard
 
-A professional, multi-view **Plotly Dash** dashboard (`Dashboard/5_Dashboard(Habiba Sameh).ipynb`) built on the master dataset in `data/processed/brazilian_ecommerce_data.csv`.
+A professional, multi-view **Plotly Dash** dashboard (`Dashboard/5_Dashboard.ipynb`) built on the master dataset in `data/processed/brazilian_ecommerce_data.csv`.
 
 ### Features
 
@@ -113,7 +123,7 @@ A professional, multi-view **Plotly Dash** dashboard (`Dashboard/5_Dashboard(Hab
 
 ```bash
 pip install -r requirements.txt
-jupyter notebook Dashboard/"5_Dashboard(Habiba Sameh).ipynb"
+jupyter notebook Dashboard/5_Dashboard.ipynb
 ```
 
 Run all cells, then open **http://127.0.0.1:8070**.
@@ -121,6 +131,24 @@ The notebook looks for the data file automatically (absolute local path → `../
 
 > 📸 Add a screenshot of the dashboard to the repo (e.g. `Dashboard/dashboard_preview.png`) and reference it here:
 > `![Dashboard preview](Dashboard/dashboard_preview.png)`
+
+---
+
+## 🤖 Models
+
+The `Model/` folder contains two models, each in its own folder with its notebook, a trained model file, and an `app.py`.
+
+| Model | Folder | Notebook | Saved model | Purpose |
+|-------|--------|----------|-------------|---------|
+| Next-month sales forecast | `Model/Next_Month_Predeiction_Model/` | `6_Next_Month_Predeiction_Model.ipynb` | `sales_forecast_model.pkl` | Forecast sales for the next month |
+| Review prediction | `Model/Review_Predection_Model/` | `7_review_Predection_Model.ipynb` | `bad_review_pipeline.pkl` | Predict whether an order will receive a bad review |
+
+### Run a model app
+
+```bash
+cd Model/Next_Month_Predeiction_Model      # or Model/Review_Predection_Model
+python app.py
+```
 
 ---
 
@@ -140,7 +168,7 @@ The notebook looks for the data file automatically (absolute local path → `../
 3. **Download the raw data**  
    The raw database is not stored in the repo. Use the link inside `data/raw/raw_data_link.md`.
 
-4. **Run the notebooks in order** (1 → 2 → 3 → 4 → 5 → 6) from the `notebooks/` folder.
+4. **Run the notebooks in order** (1 → 2 → 3 → 4 → 5 → 6 → 7) from the `notebooks/` folder.
 
 ---
 
@@ -151,4 +179,5 @@ The notebook looks for the data file automatically (absolute local path → `../
 - [x] Data preprocessing
 - [x] Exploratory Data Analysis (EDA)
 - [x] Professional interactive dashboard (`Dashboard/`) — KPIs, auto-insights, filters, 7 charts
-- [x] Review prediction model (`Model/`)
+- [x] Next-month sales forecasting model (`Model/Next_Month_Predeiction_Model/`)
+- [x] Review prediction model (`Model/Review_Predection_Model/`)
